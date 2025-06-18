@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌟 Historic Events Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="card">
+        <!-- 🎉 Fancy Image Header -->
+        <div class="image-header">
+           <div>
+  <img src="{{ url_for('static', filename='images/history_banner.jfif') }}" alt="History Banner" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px;">
+</div>
+
+
+
+        </div>
+
+        <h1>🌍 Discover What Happened On This Day!</h1>
+
+        <label for="event-date"><strong>📅 Choose a Date:</strong></label>
+        <input type="date" id="event-date">
+
+        <div id="event-list">
+            <!-- Events will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("event-date");
+            const eventContainer = document.getElementById("event-list");
+
+            function loadEvents(month, day) {
+                const apiUrl = `https://byabbe.se/on-this-day/${month}/${day}/events.json`;
+                eventContainer.innerHTML = "🔄 Loading...";
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        eventContainer.innerHTML = "";
+                        if (data && data.events.length > 0) {
+                            data.events.slice(0, 5).forEach(event => {
+                                const div = document.createElement("div");
+                                div.className = "event-item";
+                                div.innerHTML = `
+                                    <strong>🗓 ${event.year}</strong> - ${event.description}<br>
+                                    <a href="${event.wikipedia[0].wikipedia}" target="_blank">🔗 Read More</a>
+                                `;
+                                eventContainer.appendChild(div);
+                            });
+                        } else {
+                            eventContainer.innerHTML = "<div class='event-item'>❌ No historical events found for this date.</div>";
+                        }
+                    })
+                    .catch(() => {
+                        eventContainer.innerHTML = "<div class='event-item'>⚠️ Error fetching data.</div>";
+                    });
+            }
+
+            dateInput.addEventListener("change", () => {
+                const selected = new Date(dateInput.value);
+                if (!isNaN(selected)) {
+                    const month = selected.getMonth() + 1;
+                    const day = selected.getDate();
+                    loadEvents(month, day);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

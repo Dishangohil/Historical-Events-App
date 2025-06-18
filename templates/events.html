@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colorful Events</title>
+    <style>
+        /* Body Styling */
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+
+        /* Card Styling */
+        .card {
+            border-radius: 15px;
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Header Styling */
+        h1 {
+            color: #6a1b9a;
+            text-shadow: 1px 1px #e1bee7;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Event Item Styling */
+        .event-item {
+            font-size: 1.1rem;
+            border-bottom: 1px solid #ccc;
+            padding: 0.8rem 1rem;
+            background-color: #ffffffdd;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .event-item:hover {
+            background-color: #d1c4e9;
+            transform: translateY(-2px);
+        }
+
+        /* Link Styling */
+        a {
+            color: #3949ab;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1e88e5;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎊 Upcoming Events</h1>
+
+        <div class="event-item">📢 Orientation Day - 12th June 2025</div>
+        <div class="event-item">🎓 Graduation Ceremony - 18th June 2025</div>
+        <div class="event-item">💡 AI/ML Workshop - 20th June 2025</div>
+        <div class="event-item">🚀 Startup Pitch Fest - 24th June 2025</div>
+        <div class="event-item">🏆 Hackathon Finale - 30th June 2025</div>
+    </div>
+
+</body>
+</html>
